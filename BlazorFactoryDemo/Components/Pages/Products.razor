@@ -1,0 +1,45 @@
+﻿@page "/products"
+@using BlazorFactoryDemo.Model
+@using BlazorFactoryDemo.Service
+@inject ProductService ProductService
+
+<button @onclick="Reload">Reload</button>
+
+@if (Items is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <ul>
+        @foreach (var p in Items)
+        {
+            <li>
+                <b>@p.Name</b> (@p.Price)
+                <button @onclick="() => Delete(p.Id)">Delete</button>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private List<Product>? Items;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Reload();
+    }
+
+    private async Task Reload()
+    {
+        Items = await ProductService.GetAllAsync(HttpContextRequestAborted());
+    }
+
+    private async Task Delete(Guid id)
+    {
+        await ProductService.DeleteAsync(id, HttpContextRequestAborted());
+        await Reload();
+    }
+
+    private CancellationToken HttpContextRequestAborted() => CancellationToken.None;
+}
