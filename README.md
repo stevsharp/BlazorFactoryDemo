@@ -1,10 +1,15 @@
+## Connect with Me
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue)](https://www.linkedin.com/in/spyros-ponaris-913a6937/)
+
 ````md
 # Blazor Server + EF Core DbContextFactory (Tutorial Project)
 
 A minimal Blazor Server CRUD app that demonstrates the correct way to use `IDbContextFactory<TContext>` in UI driven apps, especially Blazor Server where scoped lifetimes can be long.
 
 This repo focuses on:
-- Short lived `DbContext` instances per operation
+- Short lived `
+DbContext` instances per operation
 - Clean `DbContextFactory` extension methods (`RunWithDbContext`)
 - A simple `ProductService` that never keeps a context alive
 - Automatic migrations + demo data seeding on startup
