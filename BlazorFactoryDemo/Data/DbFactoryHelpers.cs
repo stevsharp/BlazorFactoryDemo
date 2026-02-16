@@ -23,4 +23,19 @@ public static class DbFactoryHelpers
         await using var db = await factory.CreateDbContextAsync(ct);
         await action(db);
     }
+
+    public static async Task<T> WithTransaction<TContext, T>(
+        this IDbContextFactory<TContext> factory,
+        Func<TContext, Task<T>> action,
+        CancellationToken ct = default)
+        where TContext : DbContext
+    {
+        await using var db = await factory.CreateDbContextAsync(ct);
+        await using var tx = await db.Database.BeginTransactionAsync(ct);
+
+        var result = await action(db);
+
+        await tx.CommitAsync(ct);
+        return result;
+    }
 }
