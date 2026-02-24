@@ -2,6 +2,13 @@
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue)](https://www.linkedin.com/in/spyros-ponaris-913a6937/)
 
+
+Read the full article at  :
+
+https://coderlegion.com/11754/when-idbcontextfactory-enters-the-chat-and-what-it-actually-fixes
+
+https://dev.to/stevsharp/when-idbcontextfactory-enters-the-chat-and-what-it-actually-fixes-52i4
+
 ````md
 # Blazor Server + EF Core DbContextFactory (Tutorial Project)
 
